@@ -12,9 +12,6 @@ import java.nio.FloatBuffer;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-/**
- * Created by u1 on 2016/06/12.
- */
 public class RotateImageRenderer implements GLSurfaceView.Renderer {
     private long lastTime = 0;
     private GLProgram glProgram;
@@ -79,7 +76,7 @@ public class RotateImageRenderer implements GLSurfaceView.Renderer {
         //byte[] pixels = {(byte)0xc0, (byte)0x80, (byte)0x40, (byte)0xff};
         byte[] pixels = { (byte)0xc0, (byte)0x80, (byte)0x40, (byte)0xff
                         , (byte)0x40, (byte)0x80, (byte)0xc0, (byte)0xff};
-        int texture = GLUtil.create_texture(1, 2, pixels);
+        int texture = GLUtil.create_texture(2, 1, pixels);
         triangle = new Triangle(texture);
     }
 }

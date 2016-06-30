@@ -1,16 +1,15 @@
 package com.example.u.myglapplication2;
 
 import android.opengl.GLES20;
+import android.opengl.GLUtils;
+import android.util.Log;
+import android.widget.Toast;
 
-/**
- * Created by u1 on 2016/06/29.
- */
 public class GLProgram
 {
     public final int program;
     public final int positionHandle;
     public final int texturePositionHandle;
-    public final int colorHandle;
     public final int textureHandle;
     public final int vpMatrixHandle;
     public final int mMatrixHandle;
@@ -22,7 +21,7 @@ public class GLProgram
             "attribute vec2 a_texture;" +
             "varying   vec2 v_texture;" +
             "void main() {" +
-            "  v_textrure  = a_texture;" +
+            "  v_texture  = a_texture;" +
             "  gl_Position = uVPMatrix * uMMatrix * a_position;" +
             "}";
 
@@ -44,11 +43,15 @@ public class GLProgram
         GLES20.glAttachShader(program, vshader);
         GLES20.glAttachShader(program, fshader);
         GLES20.glLinkProgram(program);
+        int [] is = new int[1];
+        GLES20.glGetProgramiv(program, GLES20.GL_LINK_STATUS, is, 0);
+        if (is[0] != 0) {
+            Log.e("GLProgram", "failed to link program.");
+        }
 
         this.program        = program;
         this.positionHandle = GLES20.glGetAttribLocation(program, "a_position");
         this.texturePositionHandle = GLES20.glGetAttribLocation(program, "a_texture");
-        this.colorHandle    = GLES20.glGetUniformLocation(program, "u_color");
         this.textureHandle  = GLES20.glGetUniformLocation(program, "u_texture");
         this.vpMatrixHandle = GLES20.glGetUniformLocation(program, "uVPMatrix");
         this.mMatrixHandle  = GLES20.glGetUniformLocation(program, "uMMatrix");

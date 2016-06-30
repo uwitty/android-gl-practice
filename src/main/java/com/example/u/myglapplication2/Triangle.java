@@ -7,9 +7,6 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
-/**
- * Created by u1 on 2016/06/29.
- */
 public class Triangle {
     final static int NUM_VERTICIES = 3;
     public final int vertexCount = NUM_VERTICIES;
@@ -58,7 +55,6 @@ public class Triangle {
                 vertexStride, vertexBuffer);
 
         GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
-        //GLES20.glUniform1i(program.textureHandle, GLES20.GL_TEXTURE0);
         GLES20.glUniform1i(program.textureHandle, 0);
         GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, texture);
 

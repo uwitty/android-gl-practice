@@ -8,9 +8,6 @@ import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-/**
- * Created by u1 on 2016/06/29.
- */
 public class GLUtil {
     public static int create_texture(int width, int height, Buffer pixels) {
         int[] textures = new int[1];
